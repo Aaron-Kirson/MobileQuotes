@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="HelloWorld.ListPage"
              Padding="0,20, 0, 0 ">
-    <ListView x:Name="listView" HasUnevenRows="True" >
+    <ListView x:Name="listView" HasUnevenRows="True" GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="True" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
