@@ -10,7 +10,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="5" >
+                    <StackLayout Orientation="Horizontal" Padding="5"  >
                         <Image Source="{Binding ImageUrl}"></Image>
                         <StackLayout HorizontalOptions="StartAndExpand">
                             <Label Text="{Binding Name}"></Label>
