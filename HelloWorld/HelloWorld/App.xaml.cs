@@ -10,7 +10,7 @@ namespace HelloWorld
 		{
 			InitializeComponent();
 
-			MainPage = new ActionCreators();
+			MainPage = new WecomePage();
 		}
 
 		protected override void OnStart()

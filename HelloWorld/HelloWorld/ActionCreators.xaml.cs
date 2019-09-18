@@ -38,6 +38,29 @@ namespace HelloWorld
             
         }
 
+        IEnumerable<Contact> GetContacts(string searchText = null)
+        {
+          var contacts = new ObservableCollection<Contact> 
+            {
+                 new Contact {Name = "Aaron", ImageUrl = "http://lorempixel.com/100/100/people/1", Status = "online"},
+
+
+                     new Contact {Name = "Daniel", ImageUrl = "http://lorempixel.com/100/100/people/2", Status = "online"},
+
+
+
+                      new Contact {Name = "Naomi", ImageUrl = "http://lorempixel.com/100/100/people/3", Status = "online"}
+
+            };
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                return contacts;
+            }
+
+            return contacts.Where(c => c.Name.StartsWith(searchText));
+        }
+
         private void call_clicked(object sender, EventArgs e)
         {
             var contact = (sender as MenuItem).CommandParameter as Contact;
@@ -49,6 +72,17 @@ namespace HelloWorld
         {
             var contact = (sender as MenuItem).CommandParameter as Contact;
             _contact.Remove(contact);
+        }
+
+        private void ListView_Refreshing(object sender, EventArgs e)
+        {
+            listView.ItemsSource = GetContacts();
+            listView.EndRefresh();
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listView.ItemsSource = GetContacts(e.NewTextValue);
         }
     }
 }
